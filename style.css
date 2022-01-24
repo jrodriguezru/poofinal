@@ -1,0 +1,26 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: large;
+}
+
+h1 {
+    text-align: center;
+}
+
+.btn {
+    height: 25px;
+    font-size: small;
+}
+
+.dropDownMenu {
+    font-size: medium;
+}
+
+.mainLabel {
+    font-size: x-large;
+}
+
+.footer {
+    text-align: center;
+}
