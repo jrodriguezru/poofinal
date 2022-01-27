@@ -14,11 +14,18 @@ let darkModeP;
 let dmSelector;
 let themeLabel;
 let settingsButton;
+let gameOverButton;
+let gameOverLabel;
 let direction = 0;
 let initCol = 9;
 let initRow = 9;
 let snakeCol = initCol;
 let snakeRow = initRow;
+let snakeArray = [];
+let snakeDirections = [0];
+let snakePosition = [[9, 9]]; //snakeRow, snakeCol
+let fruitRow = 1;
+let fruitCol = 1;
 let timer = 500;
 let score = 0;
 let prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;

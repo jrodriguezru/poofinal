@@ -24,3 +24,7 @@ h1 {
 .footer {
     text-align: center;
 }
+
+.gameOverLabel {
+    font-size: xx-large;
+}

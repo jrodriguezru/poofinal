@@ -1,9 +1,10 @@
 function UIInitialization() {
 
-
+    
     canvas = createCanvas(rows * length, columns * length);
     map = createQuadrille(colorArray(getMap(), getColor(colors, 2)));
-    snake = createQuadrille([getColor(colors, 1)]);
+    snakeArray[0] = createQuadrille([getColor(colors, 1)]);
+    fruit = randomFruit();;
 
 
     pauseButton = createButton('Play/Pause Game');
@@ -40,6 +41,12 @@ function UIInitialization() {
     controlsLabel = createP('W - Move Up <br>A - Move Left <br>S - Move Down <br>D - Move Right');
     footerLabel = createP('Nicolás Montaña Cuervo <br> Juan Antonio Rodríguez Rubio <br>UN <br> 2022');
     footerLabel.class('footer');
+    gameOverLabel = createP('Game Over');
+    gameOverLabel.class('gameOverLabel');
+    gameOverButton = createButton('Retry');
+    gameOverButton.class('btn');
+    gameOverButton.mousePressed(gameOverRetry)
+
 }
 
 function UIUpdate() {
@@ -59,6 +66,8 @@ function UIUpdate() {
     controlMainLabel.position(x + 40, 140);
     controlsLabel.position(x + 40, 170);
     footerLabel.position(x + 100, 480);
+    gameOverLabel.position(x + 125, 100);
+    gameOverButton.position(x + 170, 200);
     if (windowSpace == 0) {
         pauseButton.show();
         settingsButton.show();
@@ -72,6 +81,8 @@ function UIUpdate() {
         pauseLabel.hide();
         controlMainLabel.hide();
         controlsLabel.hide();
+        gameOverButton.hide();
+        gameOverLabel.hide();
     }
     else if (windowSpace == 1) {
         pauseButton.hide();
@@ -86,6 +97,8 @@ function UIUpdate() {
         pauseLabel.hide();
         controlMainLabel.hide();
         controlsLabel.hide();
+        gameOverButton.hide();
+        gameOverLabel.hide();
     }
     else if (windowSpace == 2) {
         pauseLabel.show();
@@ -99,6 +112,22 @@ function UIUpdate() {
         themeLabel.hide();
         goBackButton.hide();
         settingsLabel.hide();
+        gameOverButton.hide();
+        gameOverLabel.hide();
+    }
+    else if (windowSpace == 3) {
+        gameOverButton.show();
+        gameOverLabel.show();
+        canvas.style('opacity', '0.4');
+        pauseButton.hide();
+        settingsButton.hide();
+        themeSelect.hide();
+        dmSelector.hide();
+        darkModeP.hide();
+        themeLabel.hide();
+        goBackButton.hide();
+        settingsLabel.hide();
+
     }
 }
 
@@ -128,7 +157,10 @@ function themeChanged() {
     else {
         theme = 0;
     }
-    snake = createQuadrille([getColor(colors, 1)]);
+    for (let i = 0; i < snakeArray.length; i++) {
+        snakeArray[i] = createQuadrille([getColor(colors, 1)]);
+    }
+    
     map = createQuadrille(colorArray(getMap(), getColor(colors, 2)));
 }
 
@@ -196,4 +228,5 @@ function goToSettings() {
 
 function goToGame() {
     windowSpace = 0;
+    pause = false;
 }
