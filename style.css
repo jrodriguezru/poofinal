@@ -8,14 +8,29 @@ h1 {
     text-align: center;
 }
 
+.bigLabel {
+    font-size: xx-large;
+}
+
 .btn {
     height: 25px;
     font-size: small;
 }
 
+.centerText {
+    text-align: center;
+}
+
 .dropDownMenu {
     font-size: medium;
 }
+
+.lcv {
+    border: 1px;
+    border-style:double;
+    width: 80px;
+    text-align: center;
+  }
 
 .mainLabel {
     font-size: x-large;
@@ -25,6 +40,3 @@ h1 {
     text-align: center;
 }
 
-.gameOverLabel {
-    font-size: xx-large;
-}
